@@ -8,7 +8,7 @@ jobs:
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-			- run: echo "❗ Triggering event is ${{ github.event }}."
+      - run: echo "❗ Triggering event is ${{ github.event }}."
 
       - name: Check out repository code
         uses: actions/checkout@v3
@@ -21,8 +21,7 @@ jobs:
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
 
-			- name: Full Context
-				env:
-					GITHUB_CONTEXT: ${{ toJSON(github) }}
-				run: echo "Full context:"
+      - name: Full Context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
