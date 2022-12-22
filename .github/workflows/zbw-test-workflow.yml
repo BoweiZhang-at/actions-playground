@@ -1,6 +1,10 @@
 name: ZBW Test Workflow
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
