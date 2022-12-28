@@ -1,10 +1,10 @@
 name: ZBW Test Workflow
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: 
+on:
   push:
     branches:
       - main
-  pull_request:
+  # pull_request:
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -23,7 +23,6 @@ jobs:
         run: |
           ls ${{ github.workspace }}
       - run: echo "🍏 This job's status is ${{ job.status }}."
-
       - name: Full Context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
