@@ -25,4 +25,4 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
 
       - name: Running script
-        run: ./script.sh
+        run: ./.github/workflows/script.sh
