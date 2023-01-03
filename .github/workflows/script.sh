@@ -1,7 +1,7 @@
 #! /usr/bin/env bash 
 
 get_shell_type() {
-  tty -s && echo "INTERACTIVE" || echo "NON-INTERACTIVE"
+  tty -s && echo "INTERACTIVE 1" || echo "NON-INTERACTIVE 1"
 }
 
 echo "Running script"
