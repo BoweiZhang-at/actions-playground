@@ -37,8 +37,11 @@ jobs:
 
       - name: Diffing
         run: |
-          tests=($(git diff --name-only HEAD^ HEAD | grep -qE '(spec|test)\.tsx'))
-          printf '%s\n' "${tests[@]}"
+          if git diff --name-only HEAD^ HEAD | grep -E '(spec|test)\.tsx'; then
+            echo "nothing"
+          else
+            echo "something"
+          fi
 
       - name: Full Context
         env:
