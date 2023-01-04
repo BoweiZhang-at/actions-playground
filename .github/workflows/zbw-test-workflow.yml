@@ -20,6 +20,9 @@ jobs:
       - name: Print git log
         run: git log --oneline | head -n5
 
+      - name: Git show
+        run: git show
+
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
