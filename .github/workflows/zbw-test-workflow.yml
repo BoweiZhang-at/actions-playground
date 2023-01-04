@@ -22,10 +22,10 @@ jobs:
         run: git show
 
       - name: Show parent 1
-        run: git show ${{ github.sha }}^
+        run: git show ${{ github.ref }}^
 
       - name: Show parent 2
-        run: git show ${{ github.sha }}^2
+        run: git show ${{ github.ref }}^2
 
       - name: Full Context
         env:
