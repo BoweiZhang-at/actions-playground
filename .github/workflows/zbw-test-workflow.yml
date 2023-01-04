@@ -26,6 +26,15 @@ jobs:
       - name: Git show
         run: git show
 
+      - name: Git show HEAD
+        run: git show HEAD
+
+      - name: Git show HEAD^
+        run: git show HEAD^
+
+      - name: Git show HEAD^2
+        run: git show HEAD^2
+
       - name: Show parent 1
         run: git show ${{ github.ref }}^
 
