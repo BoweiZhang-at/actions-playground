@@ -35,11 +35,11 @@ jobs:
       - name: Git show HEAD^2
         run: git show HEAD^2
 
-      - name: Show parent 1
-        run: git show ${{ github.ref }}^
+      - name: Diffing
+        run: |
+           tests=($(git diff --name-only HEAD^ HEAD | grep -E '(spec|test)\.tsx'))
+           printf '%s\n' "${tests[@]}"
 
-      - name: Show parent 2
-        run: git show ${{ github.ref }}^2
 
       - name: Full Context
         env:
