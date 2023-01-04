@@ -11,6 +11,7 @@ if [ ! -t 0 ]; then
   echo "NON-INTERACTIVE 2"
 else
   echo "INTERACTIVE 2"
+  echo "test"
 fi
 
 if tty -s; then
