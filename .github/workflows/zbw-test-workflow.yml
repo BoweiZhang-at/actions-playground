@@ -40,7 +40,7 @@ jobs:
         run: |
           #if git diff --name-only HEAD^ HEAD | grep -E '(spec|test)\.tsx'; then
           if git diff --name-only HEAD^ HEAD | grep -E '\.yml'; then
-            tests=($(!!))
+            tests=($(git diff --name-only HEAD^ HEAD | grep -E '\.yml'))
             echo "::set-output name=tests::${tests[@]}"
           else
             echo "No tests included in the PR."
