@@ -6,6 +6,7 @@ get_shell_type() {
 
 
 echo "yo"
+echo "haha"
 
 echo "Running script"
 get_shell_type
