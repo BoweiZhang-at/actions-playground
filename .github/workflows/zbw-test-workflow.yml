@@ -30,30 +30,30 @@ jobs:
       - name: Git show
         run: git show
 
-      - name: Git show HEAD
-        run: git show HEAD
+      #- name: Git show HEAD
+      #  run: git show HEAD
 
-      - name: Git show HEAD^
-        run: git show HEAD^
+      #- name: Git show HEAD^
+      #  run: git show HEAD^
 
-      - name: Git show HEAD^2
-        run: git show HEAD^2
+      #- name: Git show HEAD^2
+      #  run: git show HEAD^2
 
-      - name: Diffing
-        id: yoyo
-        run: |
-          #if git diff --name-only HEAD^ HEAD | grep -E '(spec|test)\.tsx'; then
-          if git diff --name-only HEAD^ HEAD | grep -E '\.yml'; then
-            tests=($(git diff --name-only HEAD^ HEAD | grep -E '\.yml'))
-            echo "::set-output name=tests::${tests[@]}"
-          else
-            echo "No tests included in the PR."
-            exit 1
-          fi
+      # - name: Diffing
+      #   id: yoyo
+      #   run: |
+      #     #if git diff --name-only HEAD^ HEAD | grep -E '(spec|test)\.tsx'; then
+      #     if git diff --name-only HEAD^ HEAD | grep -E '\.yml'; then
+      #       tests=($(git diff --name-only HEAD^ HEAD | grep -E '\.yml'))
+      #       echo "::set-output name=tests::${tests[@]}"
+      #     else
+      #       echo "No tests included in the PR."
+      #       exit 1
+      #     fi
 
-      - name: View output
-        run: |
-          echo "${{ steps.yoyo.outputs.tests }}"
+      # - name: View output
+      #   run: |
+      #     echo "${{ steps.yoyo.outputs.tests }}"
 
       - name: Full Context
         env:
