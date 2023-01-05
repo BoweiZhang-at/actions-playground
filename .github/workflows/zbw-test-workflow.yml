@@ -49,7 +49,7 @@ jobs:
 
       - name: View output
         run: |
-          echo "${{ steps.yoyo.outputs.tests }}")
+          echo "${{ steps.yoyo.outputs.tests }}"
 
       - name: Full Context
         env:
