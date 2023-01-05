@@ -38,7 +38,8 @@ jobs:
       - name: Diffing
         id: yoyo
         run: |
-          if git diff --name-only HEAD^ HEAD | grep -E '(spec|test)\.tsx'; then
+          #if git diff --name-only HEAD^ HEAD | grep -E '(spec|test)\.tsx'; then
+          if git diff --name-only HEAD^ HEAD | grep -E '\.yml'; then
             $tests=$(!!)
             echo "::set-output name=tests::${tests[@]}"
           else
