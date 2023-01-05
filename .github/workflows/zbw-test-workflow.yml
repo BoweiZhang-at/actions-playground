@@ -29,11 +29,14 @@ jobs:
       - name: Git show
         run: git show
 
+      - name: rev-parse
+        run: git rev-parse HEAD^
+
       - name: SHA Info
         run: |
-          head_sha=($(echo '${{ github.event.pull_request.head.sha }}'))
-          merge_sha=($(echo '${{ github.sha }}'))
-          latest_base_sha=($(git rev-parse HEAD^))
+          head_sha=${{ github.event.pull_request.head.sha }}
+          merge_sha=${{ github.sha }}
+          latest_base_sha=$(git rev-parse HEAD^)
           echo "head: ${head_sha}"
           echo "lastest_base: ${lastest_base}"
           echo "merge: ${merge_sha}"
