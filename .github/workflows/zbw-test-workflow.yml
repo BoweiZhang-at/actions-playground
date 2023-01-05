@@ -38,8 +38,8 @@ jobs:
           echo "lastest_base: ${lastest_base}"
           echo "merge: ${merge_sha}"
 
-      #- name: Git show HEAD
-      #  run: git show HEAD
+      - name: Git show HEAD
+        run: git show HEAD
 
       #- name: Git show HEAD^
       #  run: git show HEAD^
