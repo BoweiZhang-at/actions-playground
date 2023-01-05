@@ -15,10 +15,13 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Print out all branches
         run: git branch
+
+      - name: Print out GITHUB.REF
+        run: echo "${GITHUB_REF}"
 
       - name: Print git log
         run: git log --oneline | head -n5
