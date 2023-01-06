@@ -41,6 +41,16 @@ jobs:
           echo "lastest_base: ${lastest_base}"
           echo "merge: ${merge_sha}"
 
+      - name: Acquire SHAs for latest base and head
+        id: acquire_shas
+        run: |
+          echo "lastest_base_sha=${git rev-parse HEAD^}}" >> $GITHUB_OUTPUT
+          echo "head_sha=${git rev-parse HEAD}" >> $GITHUB_OUTPUT
+
+      - name: Read SHAs
+        run: echo ${{ steps.acquire_shas.outputs.latest_base_sha}}
+          echo ${{ steps.acquire_shas.outputs.head_sha}}
+
       - name: Git show HEAD
         run: git show HEAD
 
