@@ -32,6 +32,12 @@ jobs:
       - name: rev-parse
         run: git rev-parse HEAD^
 
+      - name: test single quotes
+        run: echo 'pull_request_number=${{ github.event.pull_request.number }}'
+
+      - name: test double quotes
+        run: echo "pull_request_number=${{ github.event.pull_request.number }}"
+
       - name: SHA Info
         run: |
           head_sha=${{ github.event.pull_request.head.sha }}
