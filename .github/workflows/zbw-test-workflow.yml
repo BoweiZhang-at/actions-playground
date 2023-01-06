@@ -48,7 +48,8 @@ jobs:
           echo head_sha="$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
       - name: Read SHAs
-        run: echo ${{ steps.acquire_shas.outputs.latest_base_sha}}
+        run: |
+          echo ${{ steps.acquire_shas.outputs.latest_base_sha}}
           echo ${{ steps.acquire_shas.outputs.head_sha}}
 
       - name: Git show HEAD
