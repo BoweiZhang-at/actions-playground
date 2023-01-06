@@ -44,8 +44,8 @@ jobs:
       - name: Acquire SHAs for latest base and head
         id: acquire_shas
         run: |
-          echo "lastest_base_sha=${git rev-parse HEAD^}" >> $GITHUB_OUTPUT
-          echo "head_sha=${git rev-parse HEAD}" >> $GITHUB_OUTPUT
+          echo lastest_base_sha="$(git rev-parse HEAD^)" >> $GITHUB_OUTPUT
+          echo head_sha="$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
 
       - name: Read SHAs
         run: echo ${{ steps.acquire_shas.outputs.latest_base_sha}}

@@ -7,6 +7,8 @@ get_shell_type() {
 echo "yo"
 echo "haha"
 
+echo a="$(git log --oneline)"
+
 echo "Running script"
 get_shell_type
 
