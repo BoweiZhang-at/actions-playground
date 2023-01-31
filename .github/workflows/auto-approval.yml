@@ -10,3 +10,8 @@ jobs:
     if: github.event.pull_request.title == 'hahaha'
     steps:
       - uses: hmarr/auto-approve-action@v3
+
+      - name: Full Context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
