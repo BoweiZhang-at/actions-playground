@@ -15,7 +15,6 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: Tag
       - uses: actions/github-script@v6
         with:
           script: |
