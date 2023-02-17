@@ -8,8 +8,8 @@ jobs:
   open-tag:
     runs-on: ubuntu-latest
     if: |
-      ${{github.event.pull_request.user.login == 'BoweiZhang-at'}} &&
-      ${{!contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers')}}
+      (github.event.pull_request.user.login == 'BoweiZhang-at') &&
+      (!contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers'))
     permissions:
       pull-requests: write
     steps:
