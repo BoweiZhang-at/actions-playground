@@ -1,0 +1,27 @@
+name: Auto retag
+
+on:
+  pull_request:
+    types: [unlabeled]
+
+jobs:
+  open-tag:
+    runs-on: ubuntu-latest
+    if: |
+      (github.event.pull_request.user.login == 'BoweiZhang-at') &&
+      (github.event.label.name == 'attn:pr-reviewers')
+    steps:
+      - name: Full Context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            github.rest.issues.addLabels({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              labels: ['attn:pr-reviewers']
+            })
