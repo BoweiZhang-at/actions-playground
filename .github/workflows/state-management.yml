@@ -5,8 +5,9 @@ on:
     types: [review_requested]
 
 jobs:
-  assign-tag:
+  open-tag:
     runs-on: ubuntu-latest
+    if: !contains(github.event.pull_request.labels.*.name , "attn:pr-reviewers"
     permissions:
       pull-requests: write
     steps:
@@ -14,6 +15,12 @@ jobs:
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
+
+      - name: WTF
+        run: |
+          echo 'wtf'
+          echo ${{ !contains(github.event.pull_request.labels.*.name , "attn:pr-reviewers")}}
+          echo ${{ github.event.pull_request.labels}}
 
       - uses: actions/github-script@v6
         with:
