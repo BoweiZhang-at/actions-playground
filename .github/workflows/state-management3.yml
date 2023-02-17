@@ -1,4 +1,4 @@
-name: State Management 3
+name: Auto retag
 
 on:
   pull_request:
@@ -8,7 +8,8 @@ jobs:
   open-tag:
     runs-on: ubuntu-latest
     if: |
-      (github.event.pull_request.user.login == 'BoweiZhang-at')
+      (github.event.pull_request.user.login == 'BoweiZhang-at') &&
+      (github.event.label.name == 'attn:pr-reviewers')
     steps:
       - name: Full Context
         env:
