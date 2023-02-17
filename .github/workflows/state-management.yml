@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       ${{github.event.pull_request.user.login == 'BoweiZhang-at'}} &&
-      ${{contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers') == 'false'}}
+      ${{!contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers')}}
     permissions:
       pull-requests: write
     steps:
