@@ -18,6 +18,12 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
+      - name: WTF
+        run: |
+          echo ${{contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers')}}
+          echo ${{contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers') == 'false'}}
+          echo ${{github.event.pull_request.user.login}}
+
       - uses: actions/github-script@v6
         with:
           script: |
