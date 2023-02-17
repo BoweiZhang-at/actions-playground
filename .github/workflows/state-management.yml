@@ -20,9 +20,9 @@ jobs:
 
       - name: WTF
         run: |
-          echo ${{contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers')}}
+          echo ${{!contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers')}}
           echo ${{contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers') == 'false'}}
-          echo ${{github.event.pull_request.user.login}}
+          echo ${{github.event.pull_request.user.login == 'BoweiZhang-at'}}
 
       - uses: actions/github-script@v6
         with:
