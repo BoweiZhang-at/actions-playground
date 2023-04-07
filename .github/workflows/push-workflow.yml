@@ -1,0 +1,43 @@
+name: ZBW Test Workflow on push
+run-name: Testing out GitHub Actions on push
+on:
+  push:
+    branches:
+      - main
+jobs:
+  Push-Workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: GitHub workspace
+        run: echo "$GITHUB_WORKSPACE"
+
+      - name: Check out repository code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Print out all branches
+        run: git branch
+
+      - name: Print out GITHUB.REF
+        run: echo "${GITHUB_REF}"
+
+      - name: Print git log
+        run: git log --oneline | head -n5
+
+      - name: Git show
+        run: git show
+
+      - name: rev-parse
+        run: git rev-parse HEAD^
+
+      - name: test single quotes
+        run: echo 'pull_request_number=${{ github.event.pull_request.number }}'
+
+      - name: test double quotes
+        run: echo "pull_request_number=${{ github.event.pull_request.number }}"
+
+      - name: Full Context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
