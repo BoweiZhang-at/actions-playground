@@ -5,7 +5,15 @@ on:
     types: [submitted]
 
 jobs:
-  open-tag:
+  full-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Full Context
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
+        run: echo "$GITHUB_CONTEXT"
+
+  remove-label:
     runs-on: ubuntu-latest
     if: |
       (github.event.pull_request.user.login == 'BoweiZhang-at') &&
