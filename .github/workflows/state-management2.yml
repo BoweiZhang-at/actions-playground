@@ -15,10 +15,7 @@ jobs:
 
   remove-label:
     runs-on: ubuntu-latest
-    if: |
-      (github.event.pull_request.user.login == 'BoweiZhang-at') &&
-      (contains(fromJSON('["approved", "changes_requested"]'), github.event.review.state)) &&
-      (contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers'))
+    if: contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers')
     steps:
       - name: Full Context
         env:
