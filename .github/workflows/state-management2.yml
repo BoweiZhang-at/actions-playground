@@ -15,9 +15,9 @@ jobs:
 
   remove-label:
     runs-on: ubuntu-latest
-    # The PR author can leave a comment review, in which case we don't want to remove the label
     if: |
-      (github.event.pull_request.user.login != github.triggering_actor) &&
+      (github.event.pull_request.user.login == 'BoweiZhang-at') &&
+      (contains(fromJSON('["approved", "changes_requested"]'), github.event.review.state)) &&
       (contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers'))
     steps:
       - name: Full Context
