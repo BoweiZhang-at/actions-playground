@@ -28,6 +28,12 @@ jobs:
       - name: Git show
         run: git show
 
+      - name: Fetch git notes
+        run: git fetch origin refs/notes/commits:refs/notes/commits || true
+
+      - name: Display the notes
+        run: git notes show ${{github.sha}} || true
+
       - name: rev-parse
         run: git rev-parse HEAD^
 
