@@ -1,16 +1,27 @@
 name: Auto approve
 
-on: pull_request_target
+on:
+    pull_request_target:
+        types:
+            - opened
 
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
-    if: github.event.pull_request.title == 'hahaha'
+    if: |
+        ${{ github.event.pull_request.title }} == "auto-approval"
+        && startsWith(${{ github.head_ref }}, "boweiZhang-")
+        && ${{ github.actor }} == "BoweiZhang-at"
     steps:
       - uses: hmarr/auto-approve-action@v3
 
+  print-context:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
       - name: Full Context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
