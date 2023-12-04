@@ -17,6 +17,11 @@ jobs:
     steps:
       - uses: hmarr/auto-approve-action@v3
 
+  print-context:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
       - name: Full Context
         env:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
