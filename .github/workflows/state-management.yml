@@ -16,18 +16,5 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: WTF
-        run: |
-          echo ${{!contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers')}}
-          echo ${{contains(github.event.pull_request.labels.*.name , 'attn:pr-reviewers') == 'false'}}
-          echo ${{github.event.pull_request.user.login == 'BoweiZhang-at'}}
-
-      - uses: actions/github-script@v6
-        with:
-          script: |
-            github.rest.issues.addLabels({
-              issue_number: context.issue.number,
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              labels: ['attn:pr-reviewers']
-            })
+      - name: Tag removal
+        run: gh pr ${{github.event.pull_request.number}} --remove-label 'attn:pr-reviewers' || true
