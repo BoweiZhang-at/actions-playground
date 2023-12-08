@@ -37,4 +37,11 @@ jobs:
               })
             } catch (error) {
               console.error(error)
+              if (error.status === 404) {
+                console.log(
+                  "Occasionally there could be a weird situation where the label is already removed when the action " +
+                  "gets triggered."
+              } else {
+                throw error;
+              }
             }
