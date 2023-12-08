@@ -25,7 +25,16 @@ jobs:
           GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: echo "$GITHUB_CONTEXT"
 
-      - name: Tag removal
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh pr edit ${{github.event.pull_request.number}} --remove-label 'attn:pr-reviewers' || true
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            try {
+              github.rest.issues.removeLabel({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                name: 'attn:pr-reviewerssssssssssssssssssss'
+              })
+            } catch (error) {
+              console.error(error)
+            }
